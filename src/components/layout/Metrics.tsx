@@ -1,16 +1,17 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTasks } from '../../contexts/todo/TasksContext';
-import { CircularProgressbar ,buildStyles} from 'react-circular-progressbar';
+import { CircularProgressbar} from 'react-circular-progressbar';
 
 
 
 const Metrics = () => {
     const { taskList , userAreas} = useTasks()
-
-
+    
+    
     const metrics = useMemo(() => {
-    const total = taskList.length
-    const completed = taskList.filter(t => t.status).length
+    const safeTasks = taskList ?? []
+    const total = safeTasks.length
+    const completed = safeTasks.filter(t => t.status).length
 
     return {
         total,

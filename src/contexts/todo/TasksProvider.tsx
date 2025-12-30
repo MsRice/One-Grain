@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import {db} from '../../utils/firebase'
 
-import type { Area, FirestoreTask, NewTask, Task, TasksProviderProps, Todo } from '../../types';
+import type { Area, FirestoreTask, NewTask, Task, TasksProviderProps } from '../../types';
 import { TasksContext } from './TasksContext';
-import { addDoc, collection,  deleteDoc,  doc,  getDocs, onSnapshot, query,  Timestamp, updateDoc, where } from 'firebase/firestore';
+import { addDoc, collection,  deleteDoc,  doc, onSnapshot, query,  Timestamp, updateDoc, where } from 'firebase/firestore';
 import { useAuthentication } from '../auth/AuthenticationContect';
 import { nanoid } from 'nanoid'
 

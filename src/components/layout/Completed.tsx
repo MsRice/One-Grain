@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTasks } from '../../contexts/todo/TasksContext';
 import { useTheme } from '../../contexts/themes/ThemeContext';
 import TaskLess from '../ui/TaskLess';

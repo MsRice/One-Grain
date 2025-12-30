@@ -1,7 +1,7 @@
 import { RxCross2 } from "react-icons/rx";
 import { useModal } from "../../contexts/modal/ModalContext";
 import { useState } from "react";
-import { Area } from "../../types";
+import type { Area } from "../../types";
 import { useAuthentication } from "../../contexts/auth/AuthenticationContect";
 import { useTasks } from "../../contexts/todo/TasksContext";
 

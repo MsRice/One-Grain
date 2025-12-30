@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAuthentication } from '../../contexts/auth/AuthenticationContect';
 import { useModal } from '../../contexts/modal/ModalContext';
 import { Link } from 'react-router-dom';
