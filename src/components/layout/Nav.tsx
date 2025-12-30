@@ -5,7 +5,7 @@ import oneGrainLogo from '../../assets/images/one_grain_logo.png'
 import { Link } from "react-router-dom";
 
 const Nav = () => {
-    const {isOpen , toggleModal} = useModal()
+    const {isSidebarOpen , toggleSidebarModal , isFormOpen} = useModal()
     return (
         <div className="nav--wrapper">
             <div className="nav--title">
@@ -18,7 +18,8 @@ const Nav = () => {
                     One Grain – small steps, big impact 🌾
                 </h4>
             </div>
-            <div onClick={() => toggleModal(isOpen)}><PiSidebarSimpleBold /></div>
+            {!isFormOpen &&
+            <div onClick={() => toggleSidebarModal(isSidebarOpen)}><PiSidebarSimpleBold /></div>}
         </div>
     );
 }

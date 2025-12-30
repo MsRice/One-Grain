@@ -10,21 +10,23 @@ export interface Task {
     tags?: string[]
     dueDate?: Date
     dateCreate: Date
+    status: boolean
 }
 export type NewTask = Omit<Task, 'id'>
 export interface FirestoreTask {
-  title: string
-  area: Area
-  description?: string
-  todos?: Todo[]
-  tags?: string[]
-  dueDate?: Timestamp | null
-  dateCreate: Timestamp
-  userId: string
+    title: string
+    area: Area
+    description?: string
+    todos: Todo[]
+    tags?: string[]
+    dueDate?: Timestamp | null
+    dateCreate: Timestamp
+    userId: string
+    status: boolean
 }
 
 export interface Todo{
-    id: number
+    id: string
     item: string
     completed: boolean
 }
@@ -83,8 +85,14 @@ export interface TaskUIProps {
 export type TasksContextType = {
     taskList: Task[] | null
     userAreas: Area[] | null
+    deleteTask:(taskId:string) => void
+    updateStatus:(taskId:string) => void
     addTask: (task: NewTask) => void
-  
+    addUserArea: (area: Area) => void
+    addTodo : (taskId: string, text: string) => void
+    toggleTodo : (taskId: string, todoId: string) => void
+    deleteTodo : (taskId: string, todoId: string) => void
+    editTodo : (taskId: string, todoId: string, text: string) => void
 }
 
 export interface TasksProviderProps {

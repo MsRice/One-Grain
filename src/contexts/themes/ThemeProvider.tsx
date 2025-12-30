@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeContext } from './ThemeContext';
 import type { Theme, ThemeProviderProps } from '../../types';
 
@@ -17,6 +17,10 @@ export default function ThemeProvider({children}: ThemeProviderProps) {
         [taskId]: !prev[taskId],
     }));
     }    
+
+    useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    }, [theme])
     return (
         <ThemeContext.Provider value={{ theme , toggleTheme , openTasks , toggleTaskView}}>
             {children}
