@@ -17,7 +17,7 @@ const TaskLess = ({task}:TaskUIProps) => {
             </div>
             <div className='task__section--wrapper'>
                 <h3 className='task__section--title'>{task.title}</h3>
-                <p className='task__section--desc'>{task.description} , bananas</p>
+                <p className='task__section--desc'>{task.description}</p>
                 <p>Todo Items: {task.todos?.length}</p>
                 <h4>Due Date: {task.dueDate?.toDateString()}</h4>
                 <p onClick={() => deleteTask(task.id)}><GoTrash /></p>
