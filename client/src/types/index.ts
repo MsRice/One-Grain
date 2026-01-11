@@ -29,6 +29,9 @@ export interface FirestoreTask {
     status: boolean
 }
 
+export type RegisterWithPasskeyProps = {
+    email: string
+}
 export interface Todo{
     id: string
     item: string
@@ -60,7 +63,9 @@ export interface Credentials {
 export interface AuthContextType {
     user : FirebaseUser | null,
     login: (userData: Credentials) => Promise<void>,
+    loginWithPasskey: (email: string) => Promise<void>,
     register: (userData: Credentials) => Promise<void>,
+    registerWithPasskey: (email : string) => Promise<void>,
     logout: () => Promise<void>
 }
 
@@ -102,3 +107,4 @@ export type TasksContextType = {
 export interface TasksProviderProps {
     children: React.ReactNode
 }
+
