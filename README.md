@@ -1,8 +1,3 @@
-Tools
-firebase
-react-router-dom
-react-icons
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -10,7 +5,8 @@ react-icons
   - [Core Features](#core-features)
   - [Tech Stack](#tech-stack)
   - [Tools & Libraries](#tools--libraries)
--[Built with](#built-with)
+  - [Learned New Skills](#learned-new-skills)
+-[Built With](#built-with)
   - [React + Typescript + Vite](#react--typescript--vite)
   - [React Compiler](#react-compiler)
   - [Expanding the ESLint configuration](#expanding-the-eSLint-configuration)
@@ -82,6 +78,24 @@ Handles client-side routing and layout composition, supporting scalable navigati
 React Icons
 Provides lightweight, consistent iconography to improve UI clarity without adding design complexity.
 
+## Learned New Skills
+
+🔐 WebAuthn & Passkey Authentication
+
+As part of this project, I explored and implemented **passwordless authentication using WebAuthn passkeys**, extending the application beyond traditional email/password flows.
+
+This work focused on understanding and integrating modern, security-first authentication patterns, including:
+
+- WebAuthn registration and authentication flows (attestation and assertion)
+- Public/private key–based authentication using browser authenticators
+- Challenge–response validation to prevent replay attacks
+- A Node/Express backend to issue challenges and verify credentials
+- Firebase-compatible user and credential persistence
+- Client-side WebAuthn integration using `@simplewebauthn/browser`
+
+This addition strengthened my understanding of **authentication architecture, security boundaries, and modern identity standards**, while reinforcing the importance of clear separation between client, server, and auth responsibilities in scalable applications.
+
+## Built With
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
