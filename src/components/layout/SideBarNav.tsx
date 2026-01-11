@@ -12,17 +12,23 @@ const SideBarNav = () => {
     }
 
     return (
-        <div className='sidebarnav--wrapper'>
-            <div className='sidebarnav__links--wrapper'>
-                <div className='links--wrapper'>
+       
+        
+    <div className='sidebarnav--wrapper'>
+    
+        <div className='sidebarnav__links--wrapper'>
+            <div className='links--wrapper'>
 
-                    <Link className='link--wrapper' to={'/'}>Tasks</Link>
-                    <Link className='link--wrapper' to={'/completed'}>Completed Tasks</Link>
-                    <Link className='link--wrapper' to={'/metrics'}>Metrics Dashboard</Link>
-                </div>
-                <button className='sidebarnav--btn' onClick={handleLogout}>Logout</button>
+                <Link className='link--wrapper' to={'/'}>Tasks</Link>
+                <Link className='link--wrapper' to={'/completed'}>Completed Tasks</Link>
+                <Link className='link--wrapper' to={'/metrics'}>Metrics Dashboard</Link>
+
             </div>
+            <button className='sidebarnav--btn primary-btn' onClick={handleLogout}>Logout</button>
         </div>
+    </div>
+        
+       
     );
 }
 

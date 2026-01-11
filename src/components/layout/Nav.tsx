@@ -8,18 +8,24 @@ const Nav = () => {
     const {isSidebarOpen , toggleSidebarModal , isFormOpen} = useModal()
     return (
         <div className="nav--wrapper">
-            <div className="nav--title">
+            <div className="nav-title--wrapper">
                 <Link to={'/'}>
                     <figure className="nav-logo--wrapper">
                         <img src={oneGrainLogo} alt="" />
                     </figure>
                 </Link>
                 <h4>
-                    One Grain – small steps, big impact 🌾
+                    One Grain <span className="title-sm">– small steps, big impact 🌾</span>
                 </h4>
             </div>
             {!isFormOpen &&
-            <div onClick={() => toggleSidebarModal(isSidebarOpen)}><PiSidebarSimpleBold /></div>}
+            <div className={`open-btn--wrapper ${isSidebarOpen ? 'hidden' : ''}`}
+                aria-expanded={isSidebarOpen}
+                aria-controls="nav-menu"
+                aria-label={isSidebarOpen ? "Close menu" : "Open menu"}
+                onClick={() => toggleSidebarModal(isSidebarOpen)} >
+                
+                <PiSidebarSimpleBold className="openModal-btn"/></div>}
         </div>
     );
 }

@@ -3,11 +3,18 @@ import { useTheme } from '../../contexts/themes/ThemeContext';
 import { useState } from 'react';
 import {FaPencil} from "react-icons/fa6";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { GoTrash } from "react-icons/go";
+import { IoMdCheckboxOutline } from "react-icons/io";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { useTasks } from '../../contexts/todo/TasksContext';
+import DueDate from './DueDate';
+import { GoTasklist } from "react-icons/go";
+import { IoIosArrowForward } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 
 const TaskMore = ({task}:TaskUIProps) => {
     const {toggleTaskView} = useTheme()
-    const {toggleTodo , addTodo ,deleteTodo , editTodo } = useTasks()
+    const {toggleTodo , addTodo ,deleteTodo , editTodo , deleteTask , updateStatus} = useTasks()
 
     const [editingId, setEditingId] = useState<string|null>(null);
     const [editText, setEditText] = useState<string>('');
@@ -50,20 +57,47 @@ const TaskMore = ({task}:TaskUIProps) => {
             <div className='task__area--tab' style={{backgroundColor: `${task.area.color}`}}>
             </div>
             <div className='more__section--wrapper'>
-                <div className='more__title--wrapper'>
-                    <h3 className='task--title'>{task.title}</h3>
-                </div>
-                <div className='more__sub-title--wrapper'>
-                    <div className='more__sub-title--desc'>
-                        <p className='more--desc'>{task.description}</p>
-                    </div>
 
-                    <div className='more__sub-title--date'>
-                        <p className='more--desc'>{task.area.name}</p>
-                        <h4>Due Date: {task.dueDate?.toDateString()}</h4>
+                <div className='more__info--wrapper'>
+                    <div className='more__section--header'>
+                        <h3 className='more__section--title'>{task.title}</h3>
+                        <span className='more__section--area-title' style={{color: `${task.area.color}` ,backgroundColor: `${task.area.color}6e`}}>{task.area.name}</span>
+                        <p className='more__section--desc'>{task.description}</p>
+                        
+                    </div>
+               
+                    <div className='task__section--sub-header'>
+                        
+                        <div className='sub-header__notification--wrapper'>
+
+                            {task.dueDate && <DueDate dueDate={task.dueDate} />}                            
+                            
+                        </div>
+
+                        <div className='sub-header__status--wrapper'>
+                            <div className='status-btns--wrapper'>
+                                {task.status ? 
+                                    <p>
+                                        <IoMdCheckboxOutline onClick={() => updateStatus(task.id)}/>
+                                    </p>
+                                : 
+                                <p>
+                                        <MdCheckBoxOutlineBlank onClick={() => updateStatus(task.id)}/>
+                                    </p>
+                                }
+                                <p onClick={() => deleteTask(task.id)}><GoTrash /></p>
+                            </div>    
+                        </div>
+
                     </div>
                 </div>
+
                 <div className='more__todo--wrapper'>
+                    <div className='todolist__title--wrapper'>
+
+                        <div className='todolist__icon--wrapper'><GoTasklist /></div>
+                        <h3 className='todolist__title'>Todos</h3>
+                    </div>
                     <div className='more--todos'>
                             
                         <ul className='todos--wrapper'>
@@ -78,19 +112,23 @@ const TaskMore = ({task}:TaskUIProps) => {
                                                 onChange={(e) => setEditText(e.target.value)}
                                                 autoFocus
                                                 />
+                                                <button type="submit"><IoIosArrowForward /></button>
+                                                
                                             </form>     
                                         </li>
                                         
                                     ):(
                                     <li className='todo__list--item' key={todo.id}>
-                                        <input 
-                                            type='checkbox' 
-                                            checked={todo.completed}
-                                            onChange={()=>handleCompletion(task.id , todo.id)}/>
-                                        
-                                        <p key={todo.id} style={{textDecoration : todo.completed ? 'line-through': 'none'}}>
-                                            {todo.item} 
-                                        </p>
+                                        <div className='todolist__item--wrapper'>
+                                            <input 
+                                                type='checkbox' 
+                                                checked={todo.completed}
+                                                onChange={()=>handleCompletion(task.id , todo.id)}/>
+                                            
+                                            <p key={todo.id} className='todolist__item--title' style={{textDecoration : todo.completed ? 'line-through': 'none'}}>
+                                                {todo.item} 
+                                            </p>
+                                        </div>
         
                                         <div className='todo--btns'>
                                             <FaPencil className="edit-btn" onClick={() => handleEditStart(todo)}/> 
@@ -101,31 +139,39 @@ const TaskMore = ({task}:TaskUIProps) => {
                             ))} 
                         </ul>
                         <div className='todos-btn--wrapper'>
-                            <button onClick={() => setAddTaskModal(o => !o)}>+ Add Todo</button>
+                            <button onClick={() => setAddTaskModal(o => !o)} className='primary-btn'>+</button>
                         </div>
                         {addTaskModal &&
-                        <form onSubmit={() => handleAddTodo(task.id)}>
-                            <label htmlFor="">Add a todo, to this task:</label>
-                            <input type="text" value={addText} onChange={e => setAddText(e.target.value) }/>
-                            <button>Submit</button>
-                        </form>
+                        <div className='add__todo--wrapper'>
+                            <RxCross2 className='todo__exit-btn' onClick={() => setAddTaskModal(o => !o)}/>
+                            <form onSubmit={() => handleAddTodo(task.id)} className='add__todo--form'>
+                                <label htmlFor="">Add a todo, to this task:</label>
+                                <input type="text" value={addText} onChange={e => setAddText(e.target.value) }/>
+                                <button className='primary-btn'>Submit</button>
+                            </form>
+                        </div>
                         }
-                    </div>
-                    <div>
-                        {task.tags?.map((el,index ) => (
-
-                            <span key={index}> #{el} , </span>
-                        ))}
                     </div>
 
                 </div>
-                <div className='more-btn--wrapper' >
-                    <p className='more-btn' onClick={() => toggleTaskView(task.id)}>
-                        Less...
-                    </p>
+                
+                <div className='more__footer--wrapper'>
+
+                    <div className='task__section--tags more'>
+                        {task.tags?.map((el,index ) => (
+
+                            <span key={index} className='task__section--tag'> #{el}</span>
+                        ))}
+                    </div>
+                    <div className='more-btn--wrapper' >
+                        <p className='more-btn' onClick={() => toggleTaskView(task.id)}>
+                            Less...
+                        </p>
+                    </div>
                 </div>
                 
             </div>
+            
 
         </div>
     );

@@ -1,0 +1,32 @@
+
+
+.nav--wrapper{
+  display: flex;
+  height: var(--nav-height);
+  width: 100%;
+  
+  padding: 0 10px 0 4px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+.nav-title--wrapper{
+  display: flex;
+  align-items: center;
+  font-size: var(--lg-font);
+}
+
+.nav-logo--wrapper{
+  display: flex;
+  height: 1.4rem;
+  
+}
+.open-btn--wrapper{
+  display: flex;
+  
+}
+.title-sm{
+    font-size: var(--sm-font);
+
+}

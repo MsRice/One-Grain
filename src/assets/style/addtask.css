@@ -1,0 +1,157 @@
+.afmodal--wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  bottom: 8px;
+  right: 8px;
+  height: 6vh;
+  width: 12vh;
+  
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--og-yellow);
+  font-size: var(--md-font);
+}
+.afmodal__svg--wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 2px;
+}
+
+
+/*  Add Task Page */
+
+.form__section--wrapper{
+  position: absolute;
+  background-color: var(--bg-yellow);
+  /* z-index: 5; */
+  top: 9vh;
+  width: 100%;
+  height: 91vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.6);
+
+}
+.form--wrapper{
+    height: 80%;
+
+}
+.add__task--title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--xxlg-font);
+}
+
+.form--form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    
+    
+}
+
+
+
+.add__input-wrapper{
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: var(--xxlg-font);
+    color: #333;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.date-area--wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+input[type="date"] {
+    padding: 4px;
+    font-size: var(--sm-font);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: monospace; /* Often helps with alignment */
+    color: #333;
+    width: 125px;
+}
+
+
+
+.form__area--wrapper{
+  position: relative;
+}
+.dropdown{
+  border: 2px solid #EA9D29;
+  background-color: #333;
+  width: 180px;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  right: 80px;
+  top: 15px;
+}
+.adder--wrapper{
+  border: 2px solid #EA9D29;
+  background-color: #333;
+  color: #EA9D29;
+
+  width: 180px;
+  border-radius: 8px;
+  padding: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  right: 86px;
+  top: 10px;
+}
+
+.dropdown__option.default {
+  border: 2px solid #EA9D29;
+  background-color: #f3e492;
+  font-weight: 600;
+}
+.dropdown__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.dropdown__option:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(2px);
+  
+}
+
+.form__area--circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.form__area--name{
+  color: var(--og-yellow);
+}

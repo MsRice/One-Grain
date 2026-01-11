@@ -12,7 +12,11 @@ export interface Task {
     dateCreate: Date
     status: boolean
 }
+
+export type DueDateProps = Pick<Task, 'dueDate'>
+export type TodosProps = Pick<Task, 'todos'>
 export type NewTask = Omit<Task, 'id'>
+
 export interface FirestoreTask {
     title: string
     area: Area

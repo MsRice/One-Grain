@@ -19,7 +19,7 @@ const HomeLayout = () => {
         <div className='container'>
             <div className={`row row-modal-${isSidebarOpen}`}>
                 {!isFormOpen?
-                <div className='main__section--wrapper'>
+                <div className={`main__section--wrapper ${!user ? 'login__section--wrapper' :''}`}>
                     <Nav />
                     <Contact />
                     <Outlet />

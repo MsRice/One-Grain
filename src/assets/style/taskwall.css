@@ -1,0 +1,25 @@
+.task-wall--wrapper{
+    height: calc(100dvh - var(--nav-height) - var(--contact-height));
+    overflow: scroll;
+
+    padding: 4px 16px 0;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: 100px ;
+    gap: .7rem;
+}
+
+.task__sp--wrapper{
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    box-shadow:var(--box-shadow)
+}
+
+.task__sp--wrapper.less{
+  grid-column: span 1;
+  grid-row: span 2;  
+  overflow-y: scroll ;
+  
+} 
+

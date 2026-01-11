@@ -11,9 +11,14 @@ const SideBar = () => {
    
     
     return (
-        <div className={`sidebar--wrapper sidebar-${isSidebarOpen}`}>
+       <>
+        <div
+        className={`backdrop ${isSidebarOpen ? 'open' : ''}`}
+        onClick={() => toggleSidebarModal(false)}
+        ></div> 
+        <div className={`sidebar--wrapper ${isSidebarOpen ? 'open' : ''}`}>
         <RxCross2 className='exit-btn' onClick={() => toggleSidebarModal(isSidebarOpen)}/>
-        <button onClick={toggleTheme} className="color-theme">Theme : {theme ==='light' ? <span>Light Mode</span> : <span>Dark Mode</span>}</button>
+        <button onClick={toggleTheme} className="color-theme primary-btn">Theme : {theme ==='light' ? <span>Light Mode</span> : <span>Dark Mode</span>}</button>
         
 
         {!user && <h3 className="additional-features"> Please Login for additional Features</h3> }
@@ -21,7 +26,9 @@ const SideBar = () => {
         
       
       </div>
+       </>  
     );
 }
 
 export default SideBar;
+
