@@ -8,13 +8,12 @@
   padding: 0 10px 0 4px;
   align-items: center;
   justify-content: space-between;
-  font-size: 2rem;
+  font-size: var(--xlg-font);
 }
 
 .nav-title--wrapper{
   display: flex;
   align-items: center;
-  font-size: var(--lg-font);
 }
 
 .nav-logo--wrapper{
@@ -27,6 +26,6 @@
   
 }
 .title-sm{
-    font-size: var(--sm-font);
+    font-size: var(--md-font);
 
 }

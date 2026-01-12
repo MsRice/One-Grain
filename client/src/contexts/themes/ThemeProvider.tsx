@@ -22,7 +22,7 @@ export default function ThemeProvider({children}: ThemeProviderProps) {
     document.body.setAttribute('data-theme', theme);
     }, [theme])
     return (
-        <ThemeContext.Provider value={{ theme , toggleTheme , openTasks , toggleTaskView}}>
+        <ThemeContext.Provider value={{ theme , toggleTheme ,setOpenTasks, openTasks , toggleTaskView}}>
             {children}
         </ThemeContext.Provider>
     );

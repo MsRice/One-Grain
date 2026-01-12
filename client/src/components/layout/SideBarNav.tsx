@@ -1,13 +1,19 @@
 import { useAuthentication } from '../../contexts/auth/AuthenticationContect';
 import { useModal } from '../../contexts/modal/ModalContext';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SideBarNav = () => {
     const {isSidebarOpen , toggleSidebarModal} = useModal()
     const { logout} = useAuthentication()
+    const moveHere = useNavigate()
     
     function handleLogout(){
         logout()
+        toggleSidebarModal(isSidebarOpen)
+    }
+    
+    function handleLink(route: string){
+        moveHere(route)
         toggleSidebarModal(isSidebarOpen)
     }
 
@@ -19,9 +25,9 @@ const SideBarNav = () => {
         <div className='sidebarnav__links--wrapper'>
             <div className='links--wrapper'>
 
-                <Link className='link--wrapper' to={'/'}>Tasks</Link>
-                <Link className='link--wrapper' to={'/completed'}>Completed Tasks</Link>
-                <Link className='link--wrapper' to={'/metrics'}>Metrics Dashboard</Link>
+                <div className='link--wrapper' onClick={() => handleLink('/')}>Tasks</div>
+                <div className='link--wrapper' onClick={() => handleLink('/completed')}>Completed Tasks</div>
+                <div className='link--wrapper' onClick={() => handleLink('/metrics')}>Metrics Dashboard</div>
 
             </div>
             <button className='sidebarnav--btn primary-btn' onClick={handleLogout}>Logout</button>

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useState } from 'react';
 import { useAuthentication } from '../../contexts/auth/AuthenticationContect';
 import { useNavigate } from 'react-router-dom';
-import { LuEye } from "react-icons/lu";
+import { LuEye, LuEyeClosed } from "react-icons/lu";
 
 const Register = () => {
     
@@ -10,6 +10,8 @@ const Register = () => {
     const [password , setPassword] = useState('')
     const [confirmPassword , setConfirmPassword] = useState('')
     const [error, setError] = useState<string | null>(null);
+    const [type , setType] = useState('password')
+    const [confType , setConfType] = useState('password')
 
     
 
@@ -47,9 +49,6 @@ const Register = () => {
         }
     }
 
-
-
-
     return (
         <div className='login--containter'>
                 
@@ -59,19 +58,33 @@ const Register = () => {
                         <input type="text" name="email" placeholder='Email'  value={email} onChange ={e => setEmail(e.target.value)}/>
                     </div>
                     <div className="input-wrapper input-pass">
-                        <input type="password" name="password" placeholder='Password' value={password} onChange ={e => setPassword(e.target.value)}/>
-                        <span><LuEye /></span>
+                        <input type={type} name="password" placeholder='Password' value={password} onChange ={e => setPassword(e.target.value)}/>
+                        <button 
+                            type='button'
+                            className='log-icon'
+                            aria-label={type === 'password' ? 'Show Password' : 'Hide Password'}
+                            onClick={() => setType(type === 'password' ? 'text' : 'password')}
+                        >
+                            { type === 'password' ? <LuEyeClosed /> :<LuEye />}
+                        </button>
                     </div>
                     <div className="input-wrapper input-pass">
-                        <input type="password" name="password" placeholder='Confirm Password' value={confirmPassword} onChange ={e => setConfirmPassword(e.target.value)}/>
-                        <span><LuEye /></span>
+                        <input type={confType} name="password" placeholder='Confirm Password' value={confirmPassword} onChange ={e => setConfirmPassword(e.target.value)}/>
+                        <button 
+                            type='button'
+                            className='log-icon'
+                            aria-label={confType === 'password' ? 'Show Password' : 'Hide Password'}
+                            onClick={() => setConfType(confType === 'password' ? 'text' : 'password')}
+                        >
+                            { confType === 'password' ? <LuEyeClosed /> :<LuEye />}
+                        </button>
                     </div>
 
                     <button type="submit">
                             Register with Email
                     </button>
                     <button type='button' onClick={() => registerWithPasskey(email)}>
-                        Enable Face ID / Touch ID
+                        Register Face ID / Touch ID
                     </button>
                     
                 </form>

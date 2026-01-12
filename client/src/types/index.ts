@@ -1,6 +1,6 @@
 import type { User as FirebaseUser} from 'firebase/auth';
 import type { Timestamp } from 'firebase/firestore';
-
+import type { Dispatch, SetStateAction } from 'react';
 export interface Task {
     id: string
     title: string
@@ -77,6 +77,7 @@ export type Theme = 'light' | 'dark'
 export type ThemeContextType = {
     theme: Theme
     toggleTheme: () => void
+    setOpenTasks: Dispatch<SetStateAction<Record<string, boolean>>>
     openTasks: Record<string , boolean>
     toggleTaskView: (taskId:string) => void
   
@@ -88,7 +89,7 @@ export interface ThemeProviderProps {
 }
 
 export interface TaskUIProps {
-    task: Task;
+    task: Task
 }
 
 export type TasksContextType = {

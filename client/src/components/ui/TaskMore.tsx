@@ -1,6 +1,6 @@
 import type { TaskUIProps, Todo } from '../../types';
 import { useTheme } from '../../contexts/themes/ThemeContext';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {FaPencil} from "react-icons/fa6";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { GoTrash } from "react-icons/go";
@@ -13,7 +13,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 
 const TaskMore = ({task}:TaskUIProps) => {
-    const {toggleTaskView} = useTheme()
+    const {toggleTaskView , setOpenTasks } = useTheme()
     const {toggleTodo , addTodo ,deleteTodo , editTodo , deleteTask , updateStatus} = useTasks()
 
     const [editingId, setEditingId] = useState<string|null>(null);
@@ -52,16 +52,36 @@ const TaskMore = ({task}:TaskUIProps) => {
     }
     console.log(task)
     
+    const openAddTodo = () => {
+        setAddTaskModal(true)
+        setOpenTasks(o => ({
+            ...o,
+            [task.id]: true,       
+            [`${task.id}-add`]: true
+        }))
+    }
+
+      const closeAddTodo = () => {
+        setAddTaskModal(false)
+        setOpenTasks(o => ({
+            ...o,
+            [`${task.id}-add`]: false
+        }))
+    }
+
     return (
-        <div className='more--wrapper'>
+        <>
+      
+        <div className={`more--wrapper ${addTaskModal? 'add' : ''}`}>
             <div className='task__area--tab' style={{backgroundColor: `${task.area.color}`}}>
             </div>
+
             <div className='more__section--wrapper'>
 
+                <h3 className='more__section--title'>{task.title}</h3>
                 <div className='more__info--wrapper'>
                     <div className='more__section--header'>
-                        <h3 className='more__section--title'>{task.title}</h3>
-                        <span className='more__section--area-title' style={{color: `${task.area.color}` ,backgroundColor: `${task.area.color}6e`}}>{task.area.name}</span>
+                        <span className='more__section--area-title' style={{'--area-color': task.area.color , backgroundColor: `${task.area.color}6e`} as React.CSSProperties}>{task.area.name}</span>
                         <p className='more__section--desc'>{task.description}</p>
                         
                     </div>
@@ -139,18 +159,9 @@ const TaskMore = ({task}:TaskUIProps) => {
                             ))} 
                         </ul>
                         <div className='todos-btn--wrapper'>
-                            <button onClick={() => setAddTaskModal(o => !o)} className='primary-btn'>+</button>
+                            <button onClick={openAddTodo} className='primary-btn'>+</button>
                         </div>
-                        {addTaskModal &&
-                        <div className='add__todo--wrapper'>
-                            <RxCross2 className='todo__exit-btn' onClick={() => setAddTaskModal(o => !o)}/>
-                            <form onSubmit={() => handleAddTodo(task.id)} className='add__todo--form'>
-                                <label htmlFor="">Add a todo, to this task:</label>
-                                <input type="text" value={addText} onChange={e => setAddText(e.target.value) }/>
-                                <button className='primary-btn'>Submit</button>
-                            </form>
-                        </div>
-                        }
+                     
                     </div>
 
                 </div>
@@ -171,10 +182,25 @@ const TaskMore = ({task}:TaskUIProps) => {
                 </div>
                 
             </div>
-            
+   
+        </div> 
 
-        </div>
+    
+            {addTaskModal &&
+            <div className='add__todo--wrapper'>
+                <RxCross2 className='todo__exit-btn' onClick={closeAddTodo}/>
+                <form onSubmit={() => handleAddTodo(task.id)} className='add__todo--form'>
+                    <label htmlFor="">Add a todo, to this task:</label>
+                    <input type="text" value={addText} onChange={e => setAddText(e.target.value) }/>
+                    <button className='primary-btn'>Submit</button>
+                </form>
+            </div>
+            }
+     
+        </>
     );
 }
 
 export default TaskMore;
+
+

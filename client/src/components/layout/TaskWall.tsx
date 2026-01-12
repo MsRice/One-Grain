@@ -6,7 +6,7 @@ import TaskMore from '../ui/TaskMore';
 const TaskWall = () => {
     const { openTasks} = useTheme()
     const { taskList} = useTasks()
-
+    
 
 
 
@@ -20,7 +20,12 @@ const TaskWall = () => {
 
                 return(
 
-                    <div key={task.id} className={`task__sp--wrapper ${!isOpen? 'more' : 'less'}`} >
+                    <div 
+                        key={task.id} 
+                        className={`
+                            task__sp--wrapper ${!isOpen? 'more' : 'less'}
+                             ${openTasks[task.id + '-add'] ? 'expanded' : ''}
+                            `} >
 
                     {!isOpen? <TaskLess task={task}/> : <TaskMore task={task} />}
                     </div>
@@ -46,3 +51,5 @@ const TaskWall = () => {
 }
 
 export default TaskWall;
+
+

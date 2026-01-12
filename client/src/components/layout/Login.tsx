@@ -35,7 +35,7 @@ const Login = () => {
                         <input type="text" name="email" placeholder='Email:' value={email} onChange ={e => setEmail(e.target.value)}/>
                         <button
                             type="button"
-                            className="passkey-btn"
+                            className="passkey-btn log-icon"
                             disabled={!email}
                             aria-label="Sign in with Face ID or Touch ID"
                             onClick={() => loginWithPasskey(email)}
@@ -48,6 +48,7 @@ const Login = () => {
                         <input type={type} name="password" placeholder='Password:' value={password} onChange ={e => setPassword(e.target.value)}/>
                         <button 
                             type="button"
+                            className='log-icon'
                             aria-label={type === 'password' ? 'Show password' : 'Hide password'} 
                             onClick={togglePass}>
                                 {type === 'password' ? <LuEyeClosed /> :<LuEye /> }

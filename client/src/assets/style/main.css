@@ -11,6 +11,7 @@
   --nav-height: clamp(54px , 8vh , 72px);
   --contact-height: clamp(70px , 8vh , 72px);
   --xxlg-font: clamp(.9rem , 8vh , 1.2rem);
+  --xlg-font: clamp(.7rem , 8vh , 1rem);
   --lg-font: clamp(.6rem , 8vh , .9rem);
   --md-font: clamp(.5rem , 8vh , .8rem);
   --sm-font: clamp(.4rem , 8vh , .6rem);

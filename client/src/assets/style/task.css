@@ -4,6 +4,8 @@
   width: 100%;
   display: flex;
   
+  z-index: 5;
+  
 }
 
 
@@ -116,7 +118,7 @@
     color: rgba(255, 255, 255, 0.637);
 }
 .date_day{
-    color: var(--card-bg);
+    color: rgb(56,56,56);
     border-radius: 0 0 4px 4px ;
     border: .5px solid #888885;
     background-image: linear-gradient(to top , #FFFFFF, #D5DCE4 );
@@ -213,19 +215,30 @@
 
 
 .more__section--title{
-    padding: 0 0 0;
+    padding: 6px 0;
+    font-size: var(--xlg-font);
 }
 .more__section--area-title{
     margin: 2px 0 6px 6px;
     padding: 2px 4px;
-    font-size: var(--xsm-font);
+    font-size: var(--md-font);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 2px;
     font-weight: 600;
+    color: var(--area-color);
+
+}
+[data-theme="dark"] .more__section--area-title {
+  color: #fff;
 }
 
+.more__section--desc{
+    
+    font-size: var(--md-font);
+    -webkit-line-clamp: 5; 
+}
 .more__todo--wrapper{
     flex: 6;
     
@@ -238,6 +251,7 @@
     align-items: center;
     justify-content: start;
 
+    margin-top: 6px;
 }
 
 .todolist__icon--wrapper{
@@ -251,7 +265,7 @@
 
 .more--todos{
     height: 100px;
-    
+    margin-top: 4px;
     display: flex;
     
 }
@@ -271,10 +285,11 @@
     padding: 2px 10px;
     
     color: #2C2C2C;
-    font-size: var(--xsm-font);
+    font-size: var(--lg-font);
     background-color: #F6F1E8;
     border-radius: 2px;
     position: relative;
+    
 }
 
 .todo__list--item:nth-child(odd){
@@ -291,11 +306,12 @@
 input[type="checkbox"] {
   accent-color: #F6F1E8;
   width: var(--md-font);
-  height: var(--sm-font);
+  height: var(--md-font);
 }
 
 .todolist__item--title{
-    padding-left: 4px ;
+    padding-left: 4px ;    
+    width: 175px;
 }
 
 .todos-btn--wrapper{
@@ -311,11 +327,12 @@ input[type="checkbox"] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 4px;
     
     background-color: var(--bg-yellow);
-    border-radius: 4px;
-    padding: 4px;
+    border-radius: 0 0 4px 4px;
+    padding: 14px;
+    box-shadow: inset var(--box-shadow);
+    height: 117px;
 }
 .add__todo--form input{
     width: 130px;
@@ -341,3 +358,4 @@ input[type="checkbox"] {
 .task__section--tags.more{
     flex: 8;
 }
+
